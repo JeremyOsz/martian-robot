@@ -6,6 +6,16 @@ const parseInput = (position, instructions) => {
 
 }
 
+const splitLine = Text =>{
+    //TODO: convert input using the below pattern
+    // const multiline = `
+    // hello
+    // world
+    // I am here
+    // `
+    // children.split('\n')
+}
+
 const validatePosition = (position) =>{
     if(typeof position !== 'string' || position.length !== 3){
         throw Error('Invalid Position')
