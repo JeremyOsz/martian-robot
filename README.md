@@ -1,6 +1,6 @@
-*Martian Robot code challenge
+* Martian Robot code challenge
 
-**The Challenge
+** The Challenge
 
 Think of this challenge as an opportunity to show us what "good" looks like to you; and a fun way to showcase your skills.
 
@@ -30,9 +30,9 @@ Here are some tips and guidelines:
 
 -   Secret tip: Make use of the sample data ;)
 
-    ***Problem: Martian Robots
+    *** Problem: Martian Robots
 
-    ***The Problem
+    *** The Problem
 
     The surface of Mars can be modelled by a rectangular grid around which robots are able to move according to instructions provided from Earth. You are to write a program that determines each sequence of robot positions and reports the final position of the robot.
 
@@ -65,11 +65,11 @@ The maximum value for any coordinate is 50.
 
 All instruction strings will be less than 100 characters in length.
 
-***The Output
+*** The Output
 
 For each robot position/instruction in the input, the output should indicate the final grid position and orientation of the robot. If a robot falls off the edge of the grid the word "LOST" should be printed after the position and orientation.
 
-***Sample Input
+*** Sample Input
 
 53\
 11E RFRFRFRF
@@ -81,7 +81,15 @@ For each robot position/instruction in the input, the output should indicate the
 Sample Output
 
 11E
-
-
-
 33NLOST 23S
+
+* Running the app
+
+-   ```yarn install``` to ensure all dependencies are met
+-   ```yarn test``` to run tests
+
+* Dependencies
+
+- Create React App - to quickly spin up a react environment
+- Jest - for testing
+- Styled components - for easy styling
