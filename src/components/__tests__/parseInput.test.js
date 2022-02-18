@@ -1,4 +1,4 @@
-import {parseInput, validateInstructions, validatePosition} from "../../helpers/parseInput/parseInput";
+import {parseInput, validateInstructions, validatePosition, validateWorld} from "../../helpers/parseInput/parseInput";
 
 // Plain text inputs
 const testInput1 = `
@@ -17,7 +17,7 @@ const testInput3 = `
 
 //Splitting inputs into strings for simplicity
 
-const testBoundry = '53'
+const testWorld = '53'
 const robotPosition1 = '11E'
 const robotInstructions1 = 'RFRFRFRF'
 
@@ -45,6 +45,12 @@ test('valid position will return true', () => {
 test('valid instructions will return true', () => {
     expect(validateInstructions(robotInstructions1)).toBe(true)
 })
+
+test('valid world will return true', () => {
+    expect(validateWorld(testWorld)).toBe(true)
+})
+
+
 
 
 
