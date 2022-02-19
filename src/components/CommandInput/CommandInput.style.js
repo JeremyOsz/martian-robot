@@ -9,6 +9,7 @@ const Container = styled.form`
     margin: auto;
     background-color: #fff;
     color: #000;
+    text-align: center
 `
 
 const TextArea = styled.textarea`
@@ -20,6 +21,8 @@ const Button = styled.button`
     border: solid 1px #000;
     background: #fff;
     border-radius: 2px;
+    margin: 5px auto;
+
 `
 
 const ErrorMessage = styled.p`

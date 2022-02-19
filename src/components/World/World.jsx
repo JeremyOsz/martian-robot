@@ -1,25 +1,25 @@
 import React from "react";
-import { WorldContainer } from "./World.style";
+import { WorldContainer, Cell } from "./World.style";
 
 const createRows = (qty, cols) => {
     const rows = []
     for(let i = 0; i < qty; i++){
         rows.push(
             <div key={i}>
-                {createCells(cols)}
+                {createCells(cols, i)}
             </div>
         )
     }
     return rows
 }
 
-const createCells = (qty) => {
+const createCells = (qty, row) => {
     const cells = []
     for(let i = 0; i < qty; i++){
         cells.push(
-            <div key={i}>
-                Hello
-            </div>
+            <Cell key={i} id={`${row}${i}`}>
+                
+            </Cell>
         )
     }
     return cells

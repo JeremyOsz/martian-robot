@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const Container = styled.div`
-    display: block;
+    display: flex;
     position: relative;
     width: 400px;
     height: 600px;
@@ -12,5 +12,8 @@ const Container = styled.div`
     margin: auto;
     background-color: #fff;
     color: #000;
+    align-content: center;
+    flex-direction: column;
+    padding: 20px
 `
 export {Container}

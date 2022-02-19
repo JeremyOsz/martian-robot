@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useContext} from "react";
 import { Container, TextArea, Button, ErrorMessage} from "./CommandInput.style";
 import { parseInput } from "../../helpers/parseInput/parseInput";
 
@@ -6,19 +6,22 @@ import { parseInput } from "../../helpers/parseInput/parseInput";
 
 
 
-const CommandInput = ({Command}) => {
+const CommandInput = ({runCommand}) => {
     const [textInput, setTextInput] = useState("");
     const [worldCoordinates, setWorldCoordinates] = useState("00");
     const [errorText, setErrorText] = useState("");
+    
 
-    const runCommand = (e) => {
+    const fireCommand = (e) => {
         e.preventDefault();
+        setErrorText('Invalid input')
         try{
             const parsedInput = parseInput(textInput)
-            Command = parsedInput
+            runCommand(parsedInput)
+            setTextInput("")
+            setErrorText("")
         }
         catch(error){
-            setErrorText('Invalid input')
             console.warn("INPUT ERROR: " + error)
         }
     }
@@ -27,15 +30,17 @@ const CommandInput = ({Command}) => {
         setTextInput(e.target.value)
     }
 
-    return(
-        <Container>
-            <TextArea data-testid='command-text' onChange={handleChange} value={textInput}>
+    return( 
 
-            </TextArea>
-            <Button data-testid='command-button' onClick={runCommand}>Run</Button>
-            <ErrorMessage>{errorText}</ErrorMessage>
+            <Container>
+                <TextArea data-testid='command-text' onChange={handleChange} value={textInput}>
 
-        </Container>
+                </TextArea>
+                <Button data-testid='command-button' onClick={fireCommand}>Run</Button>
+                <ErrorMessage>{errorText}</ErrorMessage>
+
+            </Container>
+           
     )
 }
 

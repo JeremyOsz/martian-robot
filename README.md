@@ -98,4 +98,4 @@ LLFFFLFLFL
 # Assumptions and decisions
 
 - The app should be primarily text based - able to parse a string pasted right into the app as descriped
-- App state will be managed through inheritance and data flow due to the scope of the project - more sophistocated state may call for Context
+- App state will be managed through inheritance and data flow due to the scope of the project - more sophistocated state may call for Context. I began go use Context but it was too involved and distracted me from the actual solution so opted for state inheritence

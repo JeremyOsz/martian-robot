@@ -7,4 +7,5 @@ test('Should render Command Input (Text Area + Button)', () =>{
     const runButton = screen.getByTestId('command-button')
     expect(textArea).toBeInTheDocument()
     expect(runButton).toBeInTheDocument()
+    
 })

@@ -7,3 +7,5 @@ test('Should render Robot Controller', () =>{
     expect(controllerElement).toBeInTheDocument()
     expect(controllerElement).toHaveTextContent('Hello World')
 })
+
+
