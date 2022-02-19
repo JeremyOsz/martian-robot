@@ -68,22 +68,21 @@ For each robot position/instruction in the input, the output should indicate the
 
 ### Sample Input
 
-
-53
-11E 
+53 \
+11E \
 RFRFRFRF 
 
-32N 
+32N \
 FRRFLLFFRRFLL
 
-03W 
+03W \
 LLFFFLFLFL
 
 ### Sample Output
 
-`11E
-33NLOST 
-23S`
+11E \
+33NLOST \
+23S
 
 # Running the app
 
