@@ -1,7 +1,34 @@
-import {render, screen, cleanup} from "@testing-library/react";
+import {
+    render,
+    screen
+} from "@testing-library/react";
 import World from '../World/World'
-test('Should render Robot Controller', () =>{
-    render(<World limitX={4} limitY={3}/>)
-    const worldElement = screen.getByTestId('world-wrapper')
-    expect(worldElement).toBeInTheDocument()
-})
+
+
+const Robots = [{
+        initPosition: '11E',
+        instructions: 'RFRFRFRF'
+    },
+    {
+        initPosition: '32N',
+        instructions: 'FRRFLLFFRRFLL'
+    },
+    {
+        initPosition: '03W',
+        instructions: 'LLFFFLFLFL'
+    },
+]
+test('Should render Robot Controller', () => {
+            render( < World limitX = {
+                    4
+                }
+                limitY = {
+                    3
+                }
+                Robots = {
+                    Robots
+                }
+                />)
+                const worldElement = screen.getByTestId('world-wrapper')
+                expect(worldElement).toBeInTheDocument()
+            })

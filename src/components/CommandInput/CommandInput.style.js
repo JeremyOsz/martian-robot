@@ -14,6 +14,9 @@ const Container = styled.form`
 
 const TextArea = styled.textarea`
     display: block;
+    resize: none;
+    width: 100%;
+    min-height: 10rem;
 `
 const Button = styled.button`
     display: block;
