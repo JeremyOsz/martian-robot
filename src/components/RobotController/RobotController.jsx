@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import { Container, OutputField} from "./RobotController.style";
 import CommandInput from "../CommandInput/CommandInput";
 import World from "../World/World";
-import {moveRobots, getFinalPosition} from "../../helpers/MoveRobot/moveRobot";
+import {moveRobots} from "../../helpers/MoveRobot/moveRobot";
 
 
 const RobotController = () => {
-  const [world, setWorld] = useState({ limitX: 5, limitY: 3 });
+  const [world, setWorld] = useState({ limitX: 5, limitY: 3, scents: []});
   const [Robots, setRobots] = useState([]);
   const [output, setOutput] = useState([])
 
@@ -16,8 +16,8 @@ const RobotController = () => {
     const movedRobots = moveRobots(Robots, world)
     
     setOutput(
-        movedRobots.map(robot=>{
-            return <p>{robot.finalPosition}</p>
+        movedRobots.map((robot, i)=>{
+            return <p key={i}>{robot.finalPosition}</p>
         })
     )
   }, [Robots]);
@@ -33,6 +33,7 @@ const RobotController = () => {
       setWorld({
         limitX: parseInt(Command.world.limitX) + 1,
         limitY: parseInt(Command.world.limitY) + 1,
+        scents: []
       });
     }
 
@@ -42,7 +43,6 @@ const RobotController = () => {
           return{
             initialPosition: Robot.position,
             instructions: Robot.instructions,
-            finalPosition: getFinalPosition()
           }
       })
     );

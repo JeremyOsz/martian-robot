@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { WorldContainer, Cell } from "./World.style";
 
-const World = ({ limitX, limitY, Robots, stink }) => {
+const World = ({ limitX, limitY, Robots, scent }) => {
   const [rows, setRows] = useState();
 
 //   useEffect(() => {

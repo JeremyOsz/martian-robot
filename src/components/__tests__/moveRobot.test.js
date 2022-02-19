@@ -8,7 +8,8 @@ const testRobotBefore = {
 
 const testWorld = {
     limitX: 5,
-    limitY: 3
+    limitY: 3,
+    scents : []
 }
 
 const testRobotAfter = {
@@ -18,8 +19,8 @@ const testRobotAfter = {
 }
 
 test('Should move forward one square according to orientation', () => {
-    expect(typeof moveForward("11", "E")).toBe("string")
-    expect(moveForward("11", "E", 5, 3)).toBe("21")
+    expect(typeof moveForward("11", "E", 5, 3, [])).toBe("string")
+    expect(moveForward("11", "E", 5, 3, [])).toBe("21")
 })
 
 test('Should rotate and follow cardinal directions', () => {
@@ -42,6 +43,6 @@ test('Should return a robot with a final position', () => {
 })
 
 test('Should become lost if going beyond bounds', () => {
-    expect(moveForward("11", "E", 5, 3)).toBe("21")
-    expect(moveForward("53", "E", 5, 3)).toBe("53 LOST")
+    expect(moveForward("11", "E", 5, 3, [])).toBe("21")
+    expect(moveForward("53", "E", 5, 3, [])).toBe("53 LOST")
 })

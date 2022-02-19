@@ -16,7 +16,8 @@ const moveOneRobot = (Robot, World) => {
                 orientation = rotateRobot(orientation, instruction)
             }
             else if( instruction === "F" ){
-                const newPosition = moveForward(position, orientation, World.limitX, World.limitY)
+                const newPosition = moveForward(position, orientation, World.limitX, World.limitY, World.scents)
+                
                 if(newPosition.indexOf("LOST") > -1){
                     finalPosition  = `${position}${orientation} LOST`
                     return
@@ -69,7 +70,7 @@ const rotateRobot = (orientation, direction) => {
     throw Error("Invalid Rotation")
 }
 
-const moveForward = (position, orientation, limitX, limitY) => {
+const moveForward = (position, orientation, limitX, limitY, scents) => {
     let newX = position[0]
     let newY = position[1]
 
@@ -87,14 +88,18 @@ const moveForward = (position, orientation, limitX, limitY) => {
             newX--
             break;
     }
+
+    // Ignore command to jump off where scent left
+    if(scents.length > 0 && scents.indexOf(`${newX}${newY}`) > -1) {
+        return `${position}`
+    }
+
     // Return lost position if going beyond world bounds
-    if(newX >= limitX - 1 || newY >= limitY - 1){
+    if(newX >= limitX || newY >= limitY ){
+        scents.push(`${newX}${newY}`)
         return `${position} LOST`
     }
     return `${newX}${newY}`
 }
 
-const getFinalPosition = Robot => {
-    console.log("THE END")
-}
-export {moveRobots, moveOneRobot, moveForward, getFinalPosition, rotateRobot}
+export {moveRobots, moveOneRobot, moveForward, rotateRobot}
