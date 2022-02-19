@@ -10,8 +10,7 @@ const RobotController = () => {
   const [Robots, setRobots] = useState([]);
   const [output, setOutput] = useState([])
 
-  // const [initPosition, setPosition] = useState();
-
+ 
   useEffect(() => {
     const movedRobots = moveRobots(Robots, world)
     
