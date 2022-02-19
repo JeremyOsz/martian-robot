@@ -1,7 +1,13 @@
-import React from "react";
+import React, {useState, createContext} from "react";
 import { Container } from "./RobotController.style";
 import CommandInput from "../CommandInput/CommandInput";
 import World from "../World/World";
+
+const Context = {
+    Command : {
+        "instructions": "RFRFRFRF", "position": "11E", "world": "53"
+    }
+}
 
 const RobotController = () => {
     return(
@@ -9,13 +15,7 @@ const RobotController = () => {
             Hello World
             <World limitX={4} limitY={3} />
 
-            // TODO Text field to input muliline
-            <CommandInput />
-            // TODO: Button + Text Input to generate world
-            // TODO: Button + Text Input to place Robot
-            // TODO: Field to give robot instructions
-
-            // TODO: 
+            <CommandInput Command={null}/> 
         </Container>
     )
 }

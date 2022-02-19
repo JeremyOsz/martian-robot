@@ -33,10 +33,29 @@ test('parseInput will reject a non-string', () => {
     expect(()=>{parseInput(1)}).toThrow()
 })
 
-test('valid input will return true', () => {
-    expect(parseInput(testInput1)).toBe(true)
-    expect(parseInput(testInput2)).toBe(true)
-    expect(parseInput(testInput3)).toBe(true)
+test('valid input will return object', () => {
+    const parsedInput1 = parseInput(testInput1)
+    const parsedInput2 = parseInput(testInput2)
+    const parsedInput3 = parseInput(testInput3)
+
+    //Check all inputs return valid outputs
+    expect(()=>parsedInput1).not.toThrow()
+    expect(()=>parsedInput2).not.toThrow()
+    expect(()=>parsedInput3).not.toThrow()
+
+    // Check outputs are expected
+    expect(parseInput(testInput1).world).toBe(testWorld)
+    expect(parseInput(testInput1).position).toBe(robotPosition1)
+    expect(parseInput(testInput1).instructions).toBe(robotInstructions1)
+
+    expect(parseInput(testInput2).world).toBeUndefined()
+    expect(parseInput(testInput2).position).toBe(robotPosition2)
+    expect(parseInput(testInput2).instructions).toBe(robotInstructions2)
+
+    expect(parseInput(testInput3).world).toBeUndefined()
+    expect(parseInput(testInput3).position).toBe(robotPosition3)
+    expect(parseInput(testInput3).instructions).toBe(robotInstructions3)
+    
 })
 
 test('valid position will return true', () => {

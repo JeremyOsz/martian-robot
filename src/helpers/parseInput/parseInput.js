@@ -1,14 +1,14 @@
-// parseInput and run commands
+// parseInput and generate Command object
 const parseInput = (input) => {
     //Parse if inputs are valid
     const Command = buildCommands(input)
 
     if(validatePosition(Command.position) && validateInstructions(Command.instructions)){
         if(!Command.World){
-            return true
+            return Command
         }
         else if(validateWorld(Command.World)){
-            return true
+            return Command
         }
     }
     throw Error('Invalid Input')

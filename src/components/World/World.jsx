@@ -1,4 +1,5 @@
 import React from "react";
+import { WorldContainer } from "./World.style";
 
 const createRows = (qty, cols) => {
     const rows = []
@@ -17,18 +18,18 @@ const createCells = (qty) => {
     for(let i = 0; i < qty; i++){
         cells.push(
             <div key={i}>
-                {createCells(cols)}
+                Hello
             </div>
         )
     }
     return cells
 }
 
-const World = (limitX, limitY) => {
+const World = ({limitX, limitY}) => {
     return(
-        <div data-testid='world-wrapper'>
+        <WorldContainer data-testid='world-wrapper'>
             {createRows(limitX, limitY)}
-        </div>
+        </WorldContainer>
     )
 }
 

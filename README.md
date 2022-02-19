@@ -94,3 +94,8 @@ LLFFFLFLFL
 - Create React App - to quickly spin up a react environment
 - Jest - for testing
 - Styled components - for easy styling
+
+# Assumptions and decisions
+
+- The app should be primarily text based - able to parse a string pasted right into the app as descriped
+- App state will be managed through inheritance and data flow due to the scope of the project - more sophistocated state may call for Context

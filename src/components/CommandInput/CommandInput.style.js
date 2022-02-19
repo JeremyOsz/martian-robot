@@ -2,9 +2,6 @@ import styled from "styled-components";
 
 const Container = styled.form`
     display: block;
-    width: 400px;
-    height: 600px;
-    position: absolute;
     left: 0;
     right: 0;
     bottom: 0;
@@ -24,4 +21,8 @@ const Button = styled.button`
     background: #fff;
     border-radius: 2px;
 `
-export {Container, TextArea, Button}
+
+const ErrorMessage = styled.p`
+    color: red;
+`
+export {Container, TextArea, Button, ErrorMessage}
