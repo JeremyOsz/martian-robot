@@ -68,15 +68,16 @@ For each robot position/instruction in the input, the output should indicate the
 
 ### Sample Input
 
-`53
+
+53
 11E 
-RFRFRFRF
+RFRFRFRF 
 
 32N 
 FRRFLLFFRRFLL
 
 03W 
-LLFFFLFLFL`
+LLFFFLFLFL
 
 ### Sample Output
 
