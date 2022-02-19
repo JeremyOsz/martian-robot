@@ -1,5 +1,8 @@
 // parseInput and generate Command object
 const parseInput = (input) => {
+
+    //TODO: Expand to allow for 2 digit inputs by splitting lines from spaces
+
     //Parse if inputs are valid
 
     const throwInputError = (error) => {

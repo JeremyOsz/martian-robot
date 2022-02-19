@@ -1,31 +1,38 @@
-//TODO: Write robot movement algorithm
-//TODO: Signal lost robots
+
 //TODO: Prevent subsequnt robots from getting lost
 
 
-const moveRobots = (Robots) => {
-    return Robots.map(Robot => moveOneRobot(Robot))
+const moveRobots = (Robots, World) => {
+    return Robots.map(Robot => moveOneRobot(Robot, World))
 }
 
-const moveOneRobot = Robot => {
+const moveOneRobot = (Robot, World) => {
     let position = Robot.initialPosition.slice(0,-1)
     let orientation = Robot.initialPosition.slice(-1)
+    let finalPosition = null
 
     Robot.instructions.split("").forEach(instruction => {
-        if( instruction === "L" || instruction === "R" ){
-            orientation = rotateRobot(orientation, instruction)
-        }
-        else if( instruction === "F" ){
-            position = moveForward(position, orientation)
-        }
-        else{
-            throw Error("Invalid Instruction")
-        }
+            if( instruction === "L" || instruction === "R" ){
+                orientation = rotateRobot(orientation, instruction)
+            }
+            else if( instruction === "F" ){
+                const newPosition = moveForward(position, orientation, World.limitX, World.limitY)
+                if(newPosition.indexOf("LOST") > -1){
+                    finalPosition  = `${position}${orientation} LOST`
+                    return
+                }
+                else{
+                    position = newPosition
+                }
+            }
+            else{
+                throw Error("Invalid Instruction")
+            }
     })
+
     return {
-        finalPosition : `${position}${orientation}`,
+        finalPosition : finalPosition ? finalPosition : `${position}${orientation}`,
         initialPosition : Robot.initialPosition,
-        instruction : Robot.instruction,
     }
 }
 
@@ -68,21 +75,22 @@ const moveForward = (position, orientation, limitX, limitY) => {
 
     switch(orientation){
         case "N":
-            newX++
-            break;
-        case "S":
-            newX--
-            break;
-        case "E":
             newY++
             break;
-        case "W":
+        case "S":
             newY--
             break;
+        case "E":
+            newX++
+            break;
+        case "W":
+            newX--
+            break;
     }
-
-    const newPosition = `${newX}${newY}`
-
+    // Return lost position if going beyond world bounds
+    if(newX >= limitX - 1 || newY >= limitY - 1){
+        return `${position} LOST`
+    }
     return `${newX}${newY}`
 }
 

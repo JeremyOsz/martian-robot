@@ -16,4 +16,13 @@ const Container = styled.div`
     flex-direction: column;
     padding: 20px
 `
-export {Container}
+
+const OutputField = styled.div`
+    font-size: 12px;
+    padding: 5px;
+    p{
+        font-size: 10px;
+        margin: 1px;
+    }
+`
+export {Container, OutputField}

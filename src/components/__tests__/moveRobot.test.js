@@ -6,6 +6,11 @@ const testRobotBefore = {
     finalPostion: undefined
 }
 
+const testWorld = {
+    limitX: 5,
+    limitY: 3
+}
+
 const testRobotAfter = {
     initialPosition: "11E",
     instructions: "RFRFRFRF",
@@ -14,7 +19,7 @@ const testRobotAfter = {
 
 test('Should move forward one square according to orientation', () => {
     expect(typeof moveForward("11", "E")).toBe("string")
-    expect(moveForward("11", "E", 5, 3)).toBe("12")
+    expect(moveForward("11", "E", 5, 3)).toBe("21")
 })
 
 test('Should rotate and follow cardinal directions', () => {
@@ -31,7 +36,12 @@ test('Should rotate and follow cardinal directions', () => {
 })
 
 test('Should return a robot with a final position', () => {
-    const finalPosition = moveOneRobot(testRobotBefore)
+    const finalPosition = moveOneRobot(testRobotBefore, testWorld)
     expect(typeof finalPosition).toBe("object")
     expect(finalPosition.finalPosition).toBe(testRobotAfter.finalPosition)
+})
+
+test('Should become lost if going beyond bounds', () => {
+    expect(moveForward("11", "E", 5, 3)).toBe("21")
+    expect(moveForward("53", "E", 5, 3)).toBe("53 LOST")
 })

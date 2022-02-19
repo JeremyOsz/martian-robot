@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { WorldContainer, Cell } from "./World.style";
 
-const World = ({ limitX, limitY, Robots }) => {
+const World = ({ limitX, limitY, Robots, stink }) => {
   const [rows, setRows] = useState();
 
-  useEffect(() => {
-  }, [Robots, limitX, limitY]);
+//   useEffect(() => {
+//   }, [Robots, limitX, limitY]);
 
   const createRows = (qty, cols) => {
     const rows = [];
@@ -18,9 +18,9 @@ const World = ({ limitX, limitY, Robots }) => {
   const createCells = (qty, row) => {
     const cells = [];
     for (let i = 0; i < qty; i++) {
-      cells.push(<Cell key={i} id={`${row}${i}`}></Cell>);
+      cells.push(<Cell key={i} id={`${row}${i}`}>{`${row}${i}`}</Cell>);
     }
-    return cells;
+    return cells.reverse();
   };
 
   return (
