@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Container } from "./RobotController.style";
 import CommandInput from "../CommandInput/CommandInput";
 import World from "../World/World";
+import {moveRobot, getFinalPosition} from "../../helpers/MoveRobot/moveRobot";
+
 
 const RobotController = () => {
   const [world, setWorld] = useState({ limitX: 5, limitY: 3 });
@@ -10,6 +12,8 @@ const RobotController = () => {
   // const [initPosition, setPosition] = useState();
 
   const runCommand = (Command) => {
+
+    
     if (Command.world) {
       console.log("generating new world");
 
@@ -21,13 +25,19 @@ const RobotController = () => {
       });
     }
 
-    setRobots([
-      ...Robots,
-      {
-        initPosition: Command.position,
-        instructions: Command.instructions,
-      },
-    ]);
+    console.log(Command)
+
+    setRobots(
+      Command.robots.map(Robot => {
+          return{
+            initialPosition: Robot.position,
+            instructions: Robot.instructions,
+            finalPosition: getFinalPosition()
+          }
+      })
+    );
+
+    moveRobot(Robots)
   };
 
   return (
