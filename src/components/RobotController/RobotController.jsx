@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Container } from "./RobotController.style";
 import CommandInput from "../CommandInput/CommandInput";
 import World from "../World/World";
-import {moveRobot, getFinalPosition} from "../../helpers/MoveRobot/moveRobot";
+import {moveRobots, getFinalPosition} from "../../helpers/MoveRobot/moveRobot";
 
 
 const RobotController = () => {
@@ -25,7 +25,7 @@ const RobotController = () => {
       });
     }
 
-    console.log(Command)
+    // console.log(Command)
 
     setRobots(
       Command.robots.map(Robot => {
@@ -37,7 +37,7 @@ const RobotController = () => {
       })
     );
 
-    moveRobot(Robots)
+    console.log(moveRobots(Robots))
   };
 
   return (

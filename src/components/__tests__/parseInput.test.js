@@ -103,7 +103,7 @@ test('valid input will return object', () => {
     expect(splitCommands(combinedInput)[2]).toContain(robotPosition3, robotInstructions3)
 
     expect(() => parseInput(combinedInput)).not.toThrow()
-    expect(parseInput(combinedInput)).toStrictEqual(expectedCombinedInput)
+    expect(parseInput(combinedInput)).toMatchObject(expectedCombinedInput)
 
 })
 
@@ -138,7 +138,7 @@ test('Test input 3 will be split into [03W,LLFFFLFLFL]', () => {
 })
 
 test('Command string returns valid command object', () => {
-    expect(buildCommands(combinedInput)).toStrictEqual([{
+    expect(buildCommands(combinedInput)).toMatchObject([{
             "instructions": "RFRFRFRF",
             "position": "11E",
             "world": "53"

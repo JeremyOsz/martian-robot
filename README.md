@@ -68,7 +68,7 @@ For each robot position/instruction in the input, the output should indicate the
 
 ### Sample Input
 
-53
+`53
 11E 
 RFRFRFRF
 
@@ -76,18 +76,18 @@ RFRFRFRF
 FRRFLLFFRRFLL
 
 03W 
-LLFFFLFLFL
+LLFFFLFLFL`
 
 ### Sample Output
 
-11E
+`11E
 33NLOST 
-23S
+23S`
 
 # Running the app
 
 -   `yarn install` to ensure all dependencies are met
--   `yarn test` to run tests
+-   `yarn test` to run tests and then press `a` to run all
 
 # Dependencies
 
