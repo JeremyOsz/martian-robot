@@ -29,15 +29,15 @@ const robotPosition3 = '03W'
 const robotInstructions3 = 'LLFFFLFLFL'
 
 
-console.log("test Input=" + testInput1[0])
-
 test('parseInput will reject a non-string', () => {
     expect(()=>{parseInput(1)}).toThrow()
 })
 
-// test('valid input will return true', () => {
-//     expect(parseInput(testInput1)).toBe(true)
-// })
+test('valid input will return true', () => {
+    expect(parseInput(testInput1)).toBe(true)
+    expect(parseInput(testInput2)).toBe(true)
+    expect(parseInput(testInput3)).toBe(true)
+})
 
 test('valid position will return true', () => {
     expect(validatePosition(robotPosition1)).toBe(true)
@@ -60,13 +60,19 @@ test('Test input 1 will be split into [53,11E,RFRFRFRF]', () =>{
 test('Test input 2 will be split into [32N,FRRFLLFFRRFLL]', () =>{
     const splitInput = splitLines(testInput2)
     expect(splitInput.length).toBe(2)
-    expect(splitInput).toContain('32N','RFRFRFRF')
+    expect(splitInput).toContain('32N','FRRFLLFFRRFLL')
 })
 
 test('Test input 3 will be split into [03W,LLFFFLFLFL]', () =>{
     const splitInput = splitLines(testInput3)
     expect(splitInput.length).toBe(2)
     expect(splitInput).toContain('03W','LLFFFLFLFL')
+})
+
+test('Command string returns valid command object', () =>{
+    expect(buildCommands(testInput1)).toStrictEqual({"instructions": "RFRFRFRF", "position": "11E", "world": "53"})
+    expect(buildCommands(testInput2)).toStrictEqual({"instructions": "FRRFLLFFRRFLL", "position": "32N"})
+    expect(buildCommands(testInput3)).toStrictEqual({"instructions": "LLFFFLFLFL", "position": "03W"})
 })
 
 

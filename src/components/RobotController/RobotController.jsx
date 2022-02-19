@@ -1,5 +1,6 @@
 import React from "react";
 import { Container } from "./RobotController.style";
+import CommandInput from "../CommandInput/CommandInput";
 import World from "../World/World";
 
 const RobotController = () => {
@@ -9,7 +10,7 @@ const RobotController = () => {
             <World limitX={4} limitY={3} />
 
             // TODO Text field to input muliline
-            
+            <CommandInput />
             // TODO: Button + Text Input to generate world
             // TODO: Button + Text Input to place Robot
             // TODO: Field to give robot instructions

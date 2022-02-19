@@ -1,10 +1,17 @@
+// parseInput and run commands
 const parseInput = (input) => {
     //Parse if inputs are valid
-    // const splitInput = splitLines(input)
-    if(validatePosition(position) && validateInstructions(instructions)){
-        return true
-    }
+    const Command = buildCommands(input)
 
+    if(validatePosition(Command.position) && validateInstructions(Command.instructions)){
+        if(!Command.World){
+            return true
+        }
+        else if(validateWorld(Command.World)){
+            return true
+        }
+    }
+    throw Error('Invalid Input')
 }
 
     // Take multi line input and convert into commands
@@ -12,7 +19,6 @@ const splitLines = command => {
     const splitString = command.split('\n').filter((line) => {
         return line.length > 0;
     }).map(input => input.trim())
-    console.log(splitString)
     return splitString;
 }
 
