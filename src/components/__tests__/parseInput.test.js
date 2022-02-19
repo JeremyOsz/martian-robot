@@ -1,4 +1,4 @@
-import {parseInput, validateInstructions, validatePosition, validateWorld} from "../../helpers/parseInput/parseInput";
+import {parseInput, validateInstructions, validatePosition, validateWorld, splitLines, buildCommands} from "../../helpers/parseInput/parseInput";
 
 // Plain text inputs
 const testInput1 = `
@@ -7,9 +7,10 @@ const testInput1 = `
     RFRFRFRF
 `
 const testInput2 = `
-    32N 
+    32N
     FRRFLLFFRRFLL
 `
+
 const testInput3 = `
     03W 
     LLFFFLFLFL
@@ -34,9 +35,9 @@ test('parseInput will reject a non-string', () => {
     expect(()=>{parseInput(1)}).toThrow()
 })
 
-test('valid input will return true', () => {
-    expect(parseInput(robotPosition1, robotInstructions1)).toBe(true)
-})
+// test('valid input will return true', () => {
+//     expect(parseInput(testInput1)).toBe(true)
+// })
 
 test('valid position will return true', () => {
     expect(validatePosition(robotPosition1)).toBe(true)
@@ -50,6 +51,23 @@ test('valid world will return true', () => {
     expect(validateWorld(testWorld)).toBe(true)
 })
 
+test('Test input 1 will be split into [53,11E,RFRFRFRF]', () =>{
+    const splitInput = splitLines(testInput1)
+    expect(splitInput.length).toBe(3)
+    expect(splitInput).toContain('53','11E','RFRFRFRF') 
+})
+
+test('Test input 2 will be split into [32N,FRRFLLFFRRFLL]', () =>{
+    const splitInput = splitLines(testInput2)
+    expect(splitInput.length).toBe(2)
+    expect(splitInput).toContain('32N','RFRFRFRF')
+})
+
+test('Test input 3 will be split into [03W,LLFFFLFLFL]', () =>{
+    const splitInput = splitLines(testInput3)
+    expect(splitInput.length).toBe(2)
+    expect(splitInput).toContain('03W','LLFFFLFLFL')
+})
 
 
 

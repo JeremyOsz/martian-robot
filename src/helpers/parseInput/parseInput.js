@@ -1,19 +1,45 @@
-const parseInput = (position, instructions) => {
+const parseInput = (input) => {
     //Parse if inputs are valid
+    // const splitInput = splitLines(input)
     if(validatePosition(position) && validateInstructions(instructions)){
         return true
     }
 
 }
 
-const splitLine = Text =>{
-    //TODO: convert input using the below pattern
-    // const multiline = `
-    // hello
-    // world
-    // I am here
-    // `
-    // children.split('\n')
+    // Take multi line input and convert into commands
+const splitLines = command => {
+    const splitString = command.split('\n').filter((line) => {
+        return line.length > 0;
+    }).map(input => input.trim())
+    console.log(splitString)
+    return splitString;
+}
+
+//Takes a multi-line array of commands and tranforms it into a set of instructions
+const buildCommands = (command) => {
+    const CommandArray = splitLines(command)
+    
+    //Only accept 2 or 3 line inputs
+    if(CommandArray.length > 3 || CommandArray.length < 1){
+        throw Error('Invalid Command')
+    }
+    // 3 line input creates new world and creates new robot
+    if(CommandArray.length === 3){
+        return {
+            world : CommandArray[0],
+            position : CommandArray[1],
+            instructions : CommandArray[2]
+        }
+    }
+
+    // 2 line input only creates new robot
+    if(CommandArray.length === 2){
+        return {
+            position : CommandArray[0],
+            instructions : CommandArray[1]
+        }
+    }
 }
 
 const validatePosition = (position) =>{
@@ -38,4 +64,4 @@ const validateWorld = (world) => {
 }
 
 
-export {parseInput, validatePosition, validateInstructions, validateWorld};
+export {parseInput, validatePosition, validateInstructions, validateWorld, splitLines, buildCommands};
