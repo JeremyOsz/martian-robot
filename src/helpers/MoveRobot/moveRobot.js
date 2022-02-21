@@ -1,7 +1,3 @@
-
-//TODO: Prevent subsequnt robots from getting lost
-
-
 const moveRobots = (Robots, World) => {
     return Robots.map(Robot => moveOneRobot(Robot, World))
 }

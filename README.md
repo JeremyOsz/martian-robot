@@ -104,4 +104,5 @@ LLFFFLFLFL
 
 # To Do
 
-- Improve text input to support coordinates up to 50 and reject long commands  
+- Improve text input to support coordinates up to 50 and reject long commands
+- Display robots on grid (outside of scope of test)  

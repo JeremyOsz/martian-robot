@@ -45,6 +45,12 @@ const expectedCombinedInput = {
         ]
     }
 
+const expectedOutput = `
+11E
+33N LOST
+23S
+`
+
 
 //Splitting inputs into strings for simplicity
 
